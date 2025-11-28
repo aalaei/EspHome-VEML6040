@@ -1,0 +1,56 @@
+esphome:
+  name: espcolor
+  friendly_name: EspColor
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+api:
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+web_server:
+
+i2c:
+  sda: GPIO6
+  scl: GPIO5
+
+captive_portal:
+
+external_components:
+  - source: github://aalaei/EspHome-VEML6040@main
+    components: [ veml6040 ]
+
+external_components:
+  - source:
+      type: local
+      path: components
+
+sensor:
+  - platform: veml6040
+    id: veml6040_sensor
+    update_interval: 1s
+    glass_attenuation_factor: 0.42
+    color_temperature:
+      name: "Ambient Light CCT"
+      id: veml6040_color_temperature
+    illuminance:
+      name: "Ambient Light"
+      id: veml6040_illuminance
+    red:
+      name: "RED"
+      id: red_sensor
+    green:
+      name: "Green"
+      id: green_sensor
+    blue:
+      name: "Blue"
+      id: blue_sensor
+    white:
+      name: "White"
+      id: white_sensor
