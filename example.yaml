@@ -25,12 +25,6 @@ captive_portal:
 external_components:
   - source: github://aalaei/EspHome-VEML6040@main
     components: [ veml6040 ]
-
-external_components:
-  - source:
-      type: local
-      path: components
-
 sensor:
   - platform: veml6040
     id: veml6040_sensor
